@@ -1,2 +1,4 @@
 .env
 networkproject
+logs
+networksecurity.egg-info
