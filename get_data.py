@@ -5,7 +5,6 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
-# print(MONGO_DB_URL)
 
 
 import certifi
@@ -26,7 +25,7 @@ class NetworkDataExtract():
     
     def csv_to_json_converter(self,files_path):
         try:
-            data = pf.read_csv(file_path)
+            data = pd.read_csv(files_path)
             data.reset_index(drop=True,inplace=True)
             records = list(json.loads(data.T.to_json()).values())
             return records
@@ -40,11 +39,20 @@ class NetworkDataExtract():
             self.records = records
 
             self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
-            self.databse = self.mongo_client(self.database)
-            self.collection = self.mongo_client(self.collection)
+            self.database = self.mongo_client[self.database]
+            self.collection = self.database[self.collection]
             self.collection.insert_many(self.records)
 
             return len(self.records)
         
         except Exception as e:
             raise NetworkSecurityException(e,sys)
+        
+if __name__ == "__main__":
+    File_path = r'D:\Data science\MLOps(krish naik)\Network security\Data\NetworkData.csv'
+    Database = 'NetworkSecurity'
+    Collection = 'NetworkData'
+    networkobj = NetworkDataExtract()
+    records = networkobj.csv_to_json_converter(File_path)
+    no_of_records = networkobj.pushing_data_to_mongoDB(records,Database,Collection)
+    print(f'{no_of_records} records pushed to mongoDB')
