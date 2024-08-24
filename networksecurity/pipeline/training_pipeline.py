@@ -32,11 +32,15 @@ from networksecurity.entity.artifact_entity import (
 
 class TrainingPipeline:
     def __init__(self):
-        pass
+        self.training_pipeline_config = TrainingPipelineConfig()
 
     def start_data_ingestion(self):
         try:
-            pass
+            self.data_ingestion_config = DataIngestionConfig(self.training_pipeline_config)
+            logging.info('Starting data ingestion')
+            data_ingestion = DataIngestion(self.data_ingestion_config)
+            data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+            return data_ingestion_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         
