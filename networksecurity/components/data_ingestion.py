@@ -30,6 +30,7 @@ class DataIngestion:
             collection_name = self.data_ingestion_config.collection_name
 
             self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
+            print('MongoDB connected')
             collection = self.mongo_client[database_name][collection_name]
             
             df = pd.DataFrame(list(collection.find()))
@@ -49,7 +50,7 @@ class DataIngestion:
 
             #folder creation
             dir_path = os.path.dirname(feature_store_file_path)
-            os.makedirs(dir_path,exists_ok = True)
+            os.makedirs(dir_path,exist_ok = True)
             dataframe.to_csv(feature_store_file_path,index = False, header = True)
             return dataframe
         
@@ -63,10 +64,10 @@ class DataIngestion:
             )
 
             dir_path_train = os.path.dirname(self.data_ingestion_config.training_file_path)
-            os.makedirs(dir_path_train,exists_ok = True)
+            os.makedirs(dir_path_train,exist_ok = True)
 
             dir_path_test = os.path.dirname(self.data_ingestion_config.testing_file_path)
-            os.makedirs(dir_path_test,exists_ok = True)
+            os.makedirs(dir_path_test,exist_ok = True)
 
             logging.info('Exporting train and test file path.')
 

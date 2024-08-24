@@ -2,7 +2,6 @@ from datetime import datetime
 import os
 from networksecurity.constant import training_pipeline
 
-print(training_pipeline.ARTIFACT_DIR)
 
 
 class TrainingPipelineConfig:
