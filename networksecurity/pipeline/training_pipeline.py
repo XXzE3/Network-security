@@ -27,8 +27,7 @@ from networksecurity.entity.artifact_entity import (
     DataTransformationArtifact,
     ModelTrainerArtifact,
     ModelEvaluationArtifact,
-    ModelPusherArtifact,
-    TrainingPipelineArtifact
+    ModelPusherArtifact
 )
 
 class TrainingPipeline:
