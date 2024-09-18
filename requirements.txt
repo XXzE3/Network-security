@@ -7,5 +7,6 @@ pymongo[srv]
 scikit-learn
 pyyaml
 dill
+scipy
 
 -e .
