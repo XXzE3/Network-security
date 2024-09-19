@@ -11,6 +11,7 @@ from networksecurity.entity.artifact_entity import (
 from networksecurity.entity.config_entity import ModelTrainerConfig
 
 from xgboost import XGBClassifier
+from sklearn.model_selection import RandomizedSearchCV
 
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 from networksecurity.utils.main_utils.utils import save_object,load_object
@@ -25,14 +26,19 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         
-    def perform_hyper_parameter_tuning(self):
-        pass
+    def perform_hyper_parameter_tuning(self, model, param_distribution):
+        try:
+            best_model = RandomizedSearchCV(estimator = model, param_distributions = param_distribution, scoring = 'f1', refit = True, n_iter = 20, random_state = 42)
+            return best_model
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
 
     def train_model(self, x_train, y_train):
         try:
             xgb_clf = XGBClassifier()
-            xgb_clf.fit(x_train,y_train)
-            return xgb_clf
+            best_model = self.perform_hyper_parameter_tuning(model = xgb_clf, param_distribution = self.model_trainer_config.param_distribution)
+            best_model.fit(x_train,y_train)
+            return best_model
         except Exception as e:
             raise NetworkSecurityException(e,sys)
 
