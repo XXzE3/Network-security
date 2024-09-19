@@ -8,5 +8,5 @@ scikit-learn
 pyyaml
 dill
 scipy
-
+xgboost
 -e .
