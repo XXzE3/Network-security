@@ -103,7 +103,7 @@ class TrainingPipeline:
             print(model_trainer_artifact)
             model_evaluation_artifact = self.start_model_evaluation(model_trainer_artifact = model_trainer_artifact, data_validation_artifact = data_validation_artifact)
             print(model_evaluation_artifact)
-            if not modelmodel_evaluation_artifact.is_model_accepted:
+            if not model_evaluation_artifact.is_model_accepted:
                 raise Exception("Trained model is not better than the best model")
             model_pusher_artifact = self.start_model_pusher(model_evaluation_artifact = model_evaluation_artifact)
             print(model_pusher_artifact)
