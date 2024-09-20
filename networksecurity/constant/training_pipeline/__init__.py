@@ -58,7 +58,7 @@ DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
 DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
 
 """
-Model Trainer ralated constant start with MODEL TRAINER VAR NAME
+Model Trainer related constant start with MODEL TRAINER VAR NAME
 """
 
 MODEL_TRAINER_DIR_NAME: str = "model_trainer"
@@ -73,14 +73,14 @@ MODEL_TRAINER_PARAM_DISTRIBUTION: dict = {
 }
 
 """
-Model Evalaution ralated constant start with MODEL EVALUATION VAR NAME
+Model Evalaution related constant start with MODEL EVALUATION VAR NAME
 """
 MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
 MODEL_EVALUATION_REPORT_NAME= "report.yaml"
 
 """
-Model Pusher ralated constant start with MODEL PUSHER VAR NAME
+Model Pusher related constant start with MODEL PUSHER VAR NAME
 """
 MODEL_PUSHER_DIR_NAME = "model_pusher"
 MODEL_PUSHER_SAVED_MODEL_DIR = SAVED_MODEL_DIR
