@@ -11,5 +11,7 @@ scipy
 xgboost
 fastapi
 uvicorn
+apache-airflow
+ipykernel
 
 -e .
