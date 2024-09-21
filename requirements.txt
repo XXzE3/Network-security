@@ -9,4 +9,7 @@ pyyaml
 dill
 scipy
 xgboost
+fastapi
+uvicorn
+
 -e .
