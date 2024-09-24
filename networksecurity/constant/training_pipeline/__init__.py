@@ -87,4 +87,5 @@ MODEL_PUSHER_SAVED_MODEL_DIR = SAVED_MODEL_DIR
 
 
 TRAINING_BUCKET_NAME = 'networksecuritypritam'
-PREDICTION_BUCKET_NAME = 'Network-dataSource'
+PREDICTION_BUCKET_NAME = 'networksecuritypredictions'
+PREDICTION_DIR = "prediction"
