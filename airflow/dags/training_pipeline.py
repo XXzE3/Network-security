@@ -28,7 +28,8 @@ with DAG(
         
     
     def sync_artifact_to_s3_bucket(**kwargs):
-        bucket_name = "mynetworksecurity"
+        from networksecurity.constant.training_pipeline import TRAINING_BUCKET_NAME
+        bucket_name = TRAINING_BUCKET_NAME
         os.system(f"aws s3 sync /app/Artifacts s3://{bucket_name}/artifact")
         os.system(f"aws s3 sync /app/saved_models s3://{bucket_name}/saved_models")
 
