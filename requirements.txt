@@ -15,5 +15,6 @@ apache-airflow
 ipykernel
 jinja2
 python-multipart
+mlflow
 
 -e .
