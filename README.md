@@ -92,8 +92,8 @@ Once Docker is installed, a GitHub runner is configured on the EC2 instance to h
 - Airflow is used to manage continuous training inside the Docker container.
 - Training is triggered manually when needed. 
 <br> 
-<br> 
-**[Note]**
+ 
+**[Note]** 
 #### Environment Variables
 
 To run this project locally or in CI/CD, ensure that the following environment variables are set:
