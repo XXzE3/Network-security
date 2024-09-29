@@ -25,25 +25,24 @@ The training pipeline consists of the following steps:
 - Key transformations include:
   - Using KNNImputer to handle missing values.
   - Changing the non-fraud URL label from -1 to 0.
-- The KNNImputer object is saved as a preprocessor artifact for use in the prediction pipeline.
+- The KNNImputer object is saved as a preprocessor artifact for use in the prediction pipeline and the transform data is stored as an artifact.
 
 ### 4. Model Training:
 - The transformed data is used to train an XGBClassifier model.
 - Hyperparameters are tuned using RandomSearchCV.
 - Key metrics (F1 Score, Precision, Recall) are evaluated for both the training and testing datasets.
-
-### 5. Model Validation:
-- If the test F1 score is below a set threshold, the model is rejected.
-- If the difference between test and train F1 scores exceeds a threshold, the model is also rejected.
+- Model Validation:
+  - If the test F1 score is below a set threshold, the model is rejected.
+  - If the difference between test and train F1 scores exceeds a threshold, the model is also rejected.
 - Approved models are stored as artifacts.
 
-### 6. Model Evaluation:
+### 5. Model Evaluation:
 - The current best model is compared to previously saved models using the F1 score.
 - If the new model performs better, it is promoted to the best model.
 - Metrics for all newly trained models are tracked using MLflow.
 - The classification score of both models along with their paths and acceptance status is stored as an artifact for this step.
 
-### 7. Model Pusher:
+### 6. Model Pusher:
 - The best model is saved in the `saved_model` directory, and its path is logged as an artifact.
 - This path is used in the Model Evaluation step to retrieve the best-performing model for evaluation or future predictions.
 
